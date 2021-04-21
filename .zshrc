@@ -47,6 +47,18 @@ function mkt(){
 }
 function rmk(){
 	scrub -p dod $1; shred -zun 10 -v $1
+}function monymac(){
+        sudo airmon-ng start wlx000f00103425
+        sudo Airmon-ng check kill
+        sudo ifconfig wlan0mon down
+        sudo macchanger -a wlan0mon
+        sudo ifconfig wlan0mon up
+}
+function reiniwi(){
+        sudo systemctl restart NetworkManager
+}
+function aireplang(){sudo
+aireplay-ng --help | tail -n 13 |grep -v "help" | sed '/^\s*$/d' | sed 's/^ *//'
 }
 function man() {
     env \
