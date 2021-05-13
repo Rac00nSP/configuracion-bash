@@ -72,8 +72,8 @@ function man() {
     man "$@"
 }
 extractPorts(){
-        ports="$(cat $1 | grep -oP '\d{1,5}/open' | awk '{print $1}' FS='/' | x>
-        ip_address="$(cat %1 | grep -oP '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}' | >
+        ports="$(cat $1 | grep -oP '\d{1,5}/open' | awk '{print $1}' FS='/' | xargs | tr ' ' ',')"
+        ip_address="$(cat %1 | grep -oP '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}' |  sort -u | head -n 1)"
         echo -e "\n[*] Extrayendo informacion...\n" > extractPorts.tmp
         echo -e "\t[*] Direccion IP: $ip_address">> extractPorts.tmp
         echo -e "\t[*] Puertos abiertos: $ports\n" >> extractPorts.tmp
