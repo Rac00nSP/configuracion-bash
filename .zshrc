@@ -71,6 +71,17 @@ function man() {
     LESS_TERMCAP_us=$'\e[01;32m' \
     man "$@"
 }
+extractPorts(){
+        ports="$(cat $1 | grep -oP '\d{1,5}/open' | awk '{print $1}' FS='/' | x>
+        ip_address="$(cat %1 | grep -oP '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}' | >
+        echo -e "\n[*] Extrayendo informacion...\n" > extractPorts.tmp
+        echo -e "\t[*] Direccion IP: $ip_address">> extractPorts.tmp
+        echo -e "\t[*] Puertos abiertos: $ports\n" >> extractPorts.tmp
+        echo $ports | tr -d '\n' | xclip -sel clip
+        echo -e "[*] Puertos copiados en la clipboard\n" >> extractPorts.tmp
+        /usr/bin/bat extractPorts.tmp
+        rm extractPort.tmp
+}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
